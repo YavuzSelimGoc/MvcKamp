@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model EntityLayer.Concrete.Category
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>AddCategory</title>
+</head>
+<body>
+    @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.Label("KATEGORİ ADI")
+            @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control"} )
+            @Html.ValidationMessageFor(x => x.CategoryName)
+            <br />
+            <br />
+            @Html.Label("AÇIKLAMA:")
+            @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryDescription)
+            <br />
+            <br />
+            <button class="btn btn-success">Kaydet</button>
+        </div>
+    }
+</body>
+</html>

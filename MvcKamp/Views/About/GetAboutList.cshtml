@@ -1,0 +1,40 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAboutList</title>
+</head>
+<body>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>AboutId</th>
+                <th>AboutDetails1</th>
+                <th>AboutDetails2</th>
+                <th>AboutImage1</th>
+                <th>AboutImage1</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AboutID</td>
+                    <td>@item.AboutDetails1</td>
+                    <td>@item.AboutDetails2</td>
+                    <td>@item.AboutImage1</td>
+                    <td>@item.AboutImage2</td>
+                </tr>
+            }
+        </table>
+        <a href="/About/AddAbout" class="btn btn-success">YENİ DETAY</a>
+    </div>
+</body>
+</html>
