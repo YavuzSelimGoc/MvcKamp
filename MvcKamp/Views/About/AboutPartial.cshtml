@@ -1,0 +1,27 @@
+﻿<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">YENİ HAKKIMIZDA YAZI GİRİSİ </button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Hakkımızda Veri Girisi</h1>
+            </div>
+            <form method="post" action="/About/AddAbout">
+                <div class="modal-body">
+                    <label>ABOUT DETAİLS 1</label>
+                    <input type="text" name="AboutDetails1" class="form-control" />
+                    <br />
+                    <label>ABOUT DETAİLS 2</label>
+                    <input type="text" name="AboutDetails2" class="form-control" />
+                    <br />
+                    <label>ABOUT IMAGE 1</label>
+                    <input type="text" name="AboutImage1" class="form-control" />
+                    <br />
+                    <label>ABOUT IMAGE 1</label>
+                    <input type="text" name="AboutImage2" class="form-control" />
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

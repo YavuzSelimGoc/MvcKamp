@@ -21,9 +21,20 @@ namespace BussinesLayer.Concrete
             _dal.Insert(about);
         }
 
+        public void AboutDelete(About about)
+        {
+            AboutUpdate(about);
+            
+        }
+
+        public void AboutUpdate(About about)
+        {
+            _dal.Update(about);
+        }
+
         public About GetById(int Id)
         {
-            throw new NotImplementedException();
+            return _dal.Get(x => x.AboutID == Id);
         }
 
         public List<About> GetList()

@@ -17,13 +17,10 @@ namespace MvcKamp.Controllers
         // GET: About
         public ActionResult Index()
         {
-            return View();
+            var AbaoutValues = aboutManager.GetList();
+            return View(AbaoutValues);
         }
-        public ActionResult GetAboutList()
-        {
-            var AboutValues = aboutManager.GetList();
-            return View(AboutValues);
-        }
+       
         [HttpGet]
         public ActionResult AddAbout()
         {
@@ -37,7 +34,7 @@ namespace MvcKamp.Controllers
             if(validationResult.IsValid)
             {
                 aboutManager.AboutAddBl(p);
-                return RedirectToAction("GetAboutList");
+                return RedirectToAction("Index");
             }
             else 
             {
@@ -47,6 +44,15 @@ namespace MvcKamp.Controllers
                 }
                 return View();
             }
+
         }
+        public ActionResult Delete(int Id)
+        {
+            var key = aboutManager.GetById(Id);
+            key.AboutStatus = !key.AboutStatus;
+            aboutManager.AboutDelete(key);
+            return RedirectToAction("Index");
+        }
+
     }
 }

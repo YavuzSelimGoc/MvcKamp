@@ -21,6 +21,7 @@ namespace MvcKamp.Controllers
             ViewBag.InAChar = wm.GetList().Where(x => x.WriterName.Contains("a") || x.WriterName.Contains("A")).Count();
             ViewBag.MoreCategory = cm.GetList().Where(x => x.CategoryID ==(hm.GetList().GroupBy(h => h.CategoryID).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault())).Select(k => k.CategoryName).FirstOrDefault();
             ViewBag.TrueStatus = cm.GetList().Where(x => x.CategoryStatus == true).Count();
+            ViewBag.StatusTrue = cm.GetList().Where(x => x.CategoryStatus == true).Count();
             return View();
         }
     }
