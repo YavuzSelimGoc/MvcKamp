@@ -56,6 +56,7 @@ namespace MvcKamp.Controllers
         [HttpPost]
         public ActionResult EditHeading(Heading heading)
         {
+            
             headinManager.HeadingUpdate(heading);
             return RedirectToAction("Index");
         }

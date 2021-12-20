@@ -45,5 +45,10 @@ namespace BussinesLayer.Concrete
         {
             return _concentDal.List(x => x.HeadingID== Id);
         }
+
+        public List<Concent> GetListByWriter(int Id)
+        {
+            return _concentDal.List(x => x.WriterID == Id);
+        }
     }
 }

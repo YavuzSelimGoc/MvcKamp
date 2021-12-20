@@ -11,9 +11,11 @@ using System.Web.Security;
 
 namespace MvcKamp.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         AdminManager adminManager = new AdminManager(new EfAdminDal());
+        WriterManager writerManager = new WriterManager(new EfWriterDal());
         // GET: Login
         [HttpGet]
         public ActionResult Index()
@@ -23,8 +25,6 @@ namespace MvcKamp.Controllers
         [HttpPost]
         public ActionResult Index(Admin admin)
         {
-
-
             var AdminUserValue = adminManager.GetByUserNamePassword(admin.AdminUserName, admin.AdminPassword);
             if(AdminUserValue!=null)
             {
@@ -37,7 +37,34 @@ namespace MvcKamp.Controllers
                 ViewBag.ErrorMessage = "Bilgileri Kontrol Et";
                 return View();
             }
-            
+    }
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
         }
+        [HttpPost]
+        public ActionResult WriterLogin(Writer writer)
+        {
+            var WriterUserValue = writerManager.GetByUserNamePassword(writer.WriterMail, writer.WriterPassword);
+            if (WriterUserValue != null)
+            {
+                FormsAuthentication.SetAuthCookie(WriterUserValue.WriterMail, false);
+                Session["WriterMail"] = WriterUserValue.WriterMail;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Bilgileri Kontrol Et";
+                return RedirectToAction("WriterLogin");
+            }
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Headings","Default");
+        }
+
     }
 }

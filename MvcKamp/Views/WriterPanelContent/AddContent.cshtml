@@ -1,0 +1,18 @@
+﻿@model EntityLayer.Concrete.Concent
+@{
+    ViewBag.Title = "AddContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<div class="form-group">
+    @using (Html.BeginForm("AddContent", "WriterPanelContent", FormMethod.Post))
+    {
+        <input type="hidden"  name="HeadingID" value="@ViewBag.Id"/>
+        @Html.Label("İÇERİK GİRİNİZ")
+        @Html.TextAreaFor(x => x.ConcentValue,8,31 ,new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Kaydet</button>
+
+    }
+</div>
+

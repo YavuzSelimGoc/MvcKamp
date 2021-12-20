@@ -12,6 +12,8 @@ namespace BussinesLayer.Abstract
     {
         List<Concent> GetList();
         List<Concent> GetListByHeadingId(int Id);
+        List<Concent> GetListByWriter(int Id);
+  
         void ConcentAddBl(Concent concent);
         Concent GetById(int Id);
         void ConcentDelete(Concent concent);
